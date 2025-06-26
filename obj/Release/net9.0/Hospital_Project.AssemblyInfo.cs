@@ -11,12 +11,11 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-Hospital_Project-4726f042-883b-4140-86a7-aaa17640f3d2")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hospital_Project")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abc4a6cc412fa75a7510bea712bc7012cc41e9eb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d32b017299f3ff9951daffe6b5fede8f5b6531a7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hospital_Project")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hospital_Project")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

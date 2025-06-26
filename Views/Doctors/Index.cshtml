@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Hospital_Project.Models.Doctor>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a> | <a asp-action="FindBy">Search</a> | <a asp-action="Report">Reports</a>
+</p>
+<table class="table">
+    <thead >
+            <tr>
+                
+                <th>
+                    <a asp-action="Index" asp-route-SortBy="1"><img src="~/icons/asc.png" /></a>
+                    <label asp-for="@Model.FirstOrDefault()!.DoctorFullName"></label>
+                    <a asp-action="Index" asp-route-SortBy="2"><img src="~/icons/desc.png" /></a>
+				</th>
+                <th>
+                    <a asp-action="Index" asp-route-SortBy="5"><img src="~/icons/asc.png" /></a>
+                    <label asp-for="@Model.FirstOrDefault()!.Age"></label>
+                    <a asp-action="Index" asp-route-SortBy="6"><img src="~/icons/desc.png" /></a>
+                </th>     
+                <th>
+                    @Html.DisplayNameFor(model => model.Speclization)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DoctorEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DoctorPhoneNumber)
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-SortBy="3"><img src="~/icons/asc.png" /></a>
+                    <label asp-for="@Model.FirstOrDefault()!.YearsOfExperience"></label>
+                    <a asp-action="Index" asp-route-SortBy="4"><img src="~/icons/desc.png" /></a>
+                </th>
+                
+            </tr>
+        </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <partial name="_DoctorCard" model="@item" />
+        }
+    </tbody>
+</table>

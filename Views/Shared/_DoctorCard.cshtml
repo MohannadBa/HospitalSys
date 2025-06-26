@@ -1,0 +1,33 @@
+﻿@model Doctor
+
+@inject UserManager<IdentityUser> UserManager
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => @Model.DoctorFullName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => @Model.Age)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => @Model.Speclization)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => @Model.DoctorEmail)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => @Model.DoctorPhoneNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => @Model.YearsOfExperience)
+    </td>
+    <td>
+        <a asp-route-id="@Model.DoctorId" asp-action="masterDetail">Master Detail</a> |
+        <a asp-action="Edit" asp-route-id="@Model.DoctorId">Edit</a> |
+        <a asp-action="Details" asp-route-id="@Model.DoctorId">Details</a> 
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Delete" asp-route-id="@Model.DoctorId">| Delete</a>
+        }
+        
+    </td>
+</tr>

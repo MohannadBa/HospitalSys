@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Doctors Appointments Report";
+}
+
+<div class="container mt-4">
+    <h1 class="text-primary mb-4 text-center">@ViewData["Title"]</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow">
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        @foreach (var doctor in ViewBag.report)
+                        {
+                            <li class="mb-4">
+                                <div class="doctor-header p-3 mb-3 rounded" style="background-color: #e3f2fd;">
+                                    <h3 class="text-dark mb-0">
+                                        <i class="fas fa-user-md me-2"></i>
+                                        Dr. @doctor.DoctorFullName
+                                       
+                                    </h3>
+                                </div>
+
+                                <ol class="appointment-list">
+                                    @foreach (var appt in doctor.Appointments)
+                                    {
+                                        <li class="appointment-item p-3 mb-2 rounded" style="background-color: #f8f9fa;">
+                                            <div class="d-flex flex-wrap align-items-center">
+                                                <div class="me-3 mb-2">
+                                                    <span class="text-muted"><i class="far fa-calendar-alt me-2"></i>Date:</span>
+                                                    <span class="fw-bold">@appt.AppointmentDate.ToShortDateString()</span>
+                                                </div> &nbsp;&nbsp;
+                                                <div class="me-3 mb-2">
+                                                    <span class="text-muted"><i class="far fa-clock me-2"></i>Time:</span>
+                                                    <span class="fw-bold">@appt.AppointmentTime.ToShortTimeString()</span>
+                                                </div>&nbsp;&nbsp;
+                                                <div class="me-3 mb-2">
+                                                    <span class="text-muted"><i class="fas fa-user me-2"></i>Patient:</span>
+                                                    <span class="fw-bold">@appt.Patient!.PatientFullName</span>
+                                                </div>&nbsp;&nbsp;
+                                                <div class="me-3 mb-2">
+                                                    <span class="text-muted"><i class="fas fa-money-bill-wave me-2"></i>Fee:</span>
+                                                    <span class="fw-bold text-success">@appt.ConsultationFee.ToString("c")</span>
+                                                </div>&nbsp;&nbsp;
+                                                <div class="w-100">
+                                                    <span class="text-muted"><i class="fas fa-stethoscope me-2"></i>Diagnosis:</span>
+                                                    <span class="fw-bold">@appt.Diagnosis</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                </ol>
+                                <hr class="my-4" style="border-top: 2px dashed #dee2e6;" />
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

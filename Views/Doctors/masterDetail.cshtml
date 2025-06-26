@@ -1,0 +1,92 @@
+﻿@model Doctor
+@{
+    var ages = ViewData["Ages"] as List<int>;
+    int i = 0;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Doctor (Master)</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            <label asp-for="DoctorFullName" class="form-label"></label>
+        </dt>
+        <dd class="col-sm-10">
+            <input asp-for="DoctorFullName" class="form-control" disabled />
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-for="Speclization" class="form-label"></label>
+        </dt>
+        <dd class="col-sm-10">
+            <input asp-for="Speclization" class="form-control" disabled />
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-for="DoctorEmail" class="form-label"></label>
+        </dt>
+        <dd class="col-sm-10">
+            <input asp-for="DoctorEmail" class="form-control" disabled />
+        </dd>
+        <dt class="col-sm-2">
+            <label asp-for="DoctorPhoneNumber" class="form-label"></label>
+        </dt>
+        <dd class="col-sm-10">
+            <input asp-for="DoctorPhoneNumber" class="form-control" disabled />
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Patients (Details)</h4>
+
+    <hr />
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <label asp-for="@(Model.Appointments!.FirstOrDefault()!.Patient!.PatientFullName)"></label>
+                </th>
+                <th>
+                    <label>Age</label>
+                </th>
+                <th>
+                    <label asp-for="@(Model.Appointments!.FirstOrDefault()!.Patient!.Gender)"></label>
+                </th>
+                <th>
+                    <label asp-for="@(Model.Appointments!.FirstOrDefault()!.Patient!.PatientPhoneNumber)"></label>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var dp in Model.Appointments!)
+            {
+                var patient = dp.Patient;
+
+                <tr>
+                    <td>@patient.PatientFullName</td>
+                    <td>@(ages![i++])</td>
+                    <td>@patient.Gender</td>
+                    <td>@patient.PatientPhoneNumber</td>
+                    <td>
+                        <a asp-controller="Patients" asp-action="Edit" asp-route-id="@patient.PatientId">Edit</a> |
+                        <a asp-controller="Patients" asp-action="Details" asp-route-id="@patient.PatientId">Details</a> |
+                        <a asp-controller="Patients" asp-action="Delete" asp-route-id="@patient.PatientId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="row card border-primary p-3">
+    <dl>
+        <dt class="form-label">Total Patients:</dt>
+        <dd class="form-control" disabled>
+            @ViewData["TotalPatients"]
+        </dd>
+    </dl>
+</div>
+

@@ -1,0 +1,67 @@
+﻿@using Hospital_Project.Models.ModelView
+@model DoctorModelView
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <br />
+    <br />
+    <form asp-action="FindBy">
+        <dl>
+            <dt>
+                <label asp-for="PatientFullName" class="form-label"></label>
+            </dt>
+            <dd>
+                <input asp-for="PatientFullName" class="form-control" />
+            </dd>
+            <dt>
+                <label asp-for="FileNo" class="form-label"></label>
+            </dt>
+            <dd>
+                <input asp-for="FileNo" class="form-control" type="number" />
+        </dl>
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
+</div>
+<hr />
+<div class="row">
+    <h3>Results</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <label asp-for="@Model.Patients.FirstOrDefault()!.PatientFullName"></label>
+                </th>
+                <th>
+                    <label asp-for="@Model.Patients.FirstOrDefault()!.FileNo"></label>
+                </th>
+                <th>
+                    <label asp-for="@Model.Patients.FirstOrDefault()!.DateOfBirth"></label>
+                </th>
+                <th>
+                    <label asp-for="@Model.Patients.FirstOrDefault()!.Gender"></label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Patients)
+            {
+                <tr>
+                    <td>
+                        @item.PatientFullName
+                    </td>
+                    <td>
+                        @item.FileNo
+                    </td>
+                    <td>
+                        @item.DateOfBirth
+                    </td>
+                    <td>
+                        @item.Gender
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

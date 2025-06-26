@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Main Content -->
+<div class="container text-center">
+    <h1 class="display-4 text-success">Welcome to Our Hospital</h1>
+    <p class="lead">Your health is our priority. We offer top-quality medical care and specialist services.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card border-primary h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Meet Our Doctors</h5>
+                    <p class="card-text">Browse our list of qualified and experienced doctors.</p>
+                    <a asp-controller="Doctors" asp-action="Index" class="btn btn-outline-primary mt-auto">View Doctors</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-success h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Our Patients</h5>
+                    <p class="card-text">Manage patient details and medical records.</p>
+                    <a asp-controller="Patients" asp-action="Index" class="btn btn-outline-success mt-auto">View Patients</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-info h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Book Appointment</h5>
+                    <p class="card-text">Schedule appointments with our specialists.</p>
+                    <a asp-controller="Appointments" asp-action="Index" class="btn btn-outline-info mt-auto">Appointments</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
